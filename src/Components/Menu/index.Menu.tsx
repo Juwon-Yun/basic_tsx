@@ -11,22 +11,28 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { useHistory } from 'react-router-dom';
 
 export default function MenuAppBar() {
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [auth, setAuth] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const history = useHistory()
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
-  };
+    };
 
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
-  };
+    };
 
-  const handleClose = () => {
+    const handleClose = () => {
     setAnchorEl(null);
-  };
+    };
+
+    const logout = () => { 
+        history.push('/')
+    }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -85,6 +91,7 @@ export default function MenuAppBar() {
               >
                 <MenuItem onClick={handleClose}>프로필</MenuItem>
                 <MenuItem onClick={handleClose}>회원 정보</MenuItem>
+                <MenuItem onClick={logout}>로그아웃</MenuItem>
               </Menu>
             </div>
           )}

@@ -46,8 +46,36 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a {color: #fff; text-decoration: none; outline: none}
-a:hover, a:active,a:visited {text-decoration: none; color:#fff; background-color:none;}
+a {
+	color: #fff;
+	text-decoration: none;
+	outline: none;
+}
+a:hover, a:active,a:visited {
+	text-decoration: none;
+	color:#fff;
+	background-color:none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  height: 100vh;
+  background-color: #f6f6f6;
+}
+
 `
 
 export default GlobalStyle

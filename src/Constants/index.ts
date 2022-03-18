@@ -1,5 +1,6 @@
 export const PAGES = {
-    MAIN : "MAIN",
+    MAIN: "/",
+    HOME: "/home",
 }
 
 export const TEXTID = {
@@ -7,7 +8,23 @@ export const TEXTID = {
     PW : "text_pw",
 }
 
-export const TEXTLABELS = {
+export const LABELS = {
     ID: "ID",
-    PW: "Password"
+    PW: "Password",
+    RM: "Remember Me"
 }
+
+export const CN = {
+    BC : "box-container"
+}
+
+export const TEXTOBJ = [
+    {
+        id: TEXTID.ID,
+        label : LABELS.ID
+    },
+    {
+        id: TEXTID.PW,
+        label : LABELS.PW
+    },
+]
