@@ -18,6 +18,11 @@ export const CN = {
     BC : "box-container"
 }
 
+export const LOCAL = {
+    KEY: "chk",
+    VALUE : localStorage.getItem('chk')
+}
+
 export const TEXTOBJ = [
     {
         id: TEXTID.ID,
@@ -28,3 +33,4 @@ export const TEXTOBJ = [
         label : LABELS.PW
     },
 ]
+

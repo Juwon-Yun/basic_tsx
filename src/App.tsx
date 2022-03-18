@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import '../src/Assets/css/App.css';
 import Login from './Pages/Login/index.Login'
@@ -12,16 +12,16 @@ import { Dispatch } from 'redux';
 function App() {
 
   const state = useSelector((state: RootState) => state)
+
+  const [toggle, setToggle] = useState(true)
+
   const dispatch : Dispatch = useDispatch()
-
-  console.log(state)
-
 
   return (
     <div className="App">
       <Switch>
         <Route exact path={"/"}>
-          <Login></Login>
+          <Login toggle={ toggle }></Login>
         </Route>
 
         <Route path={"/si"}>

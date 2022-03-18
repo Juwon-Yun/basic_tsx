@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Btn from "../../Components/Button/index.Button"
 import Inputs from "../../Components/Input/index.Input"
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,24 +6,28 @@ import Checkbox from '@mui/material/Checkbox';
 
 import * as S from './style.Login'
 import * as C from '../../Constants/index'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../Modules";
 
-const Login = () => {
+interface LoginProps { 
+    toggle :boolean
+}
 
+const Login = ( { toggle } : LoginProps):JSX.Element => {
+    
     const dispatch = useDispatch()
     
-    const [toggle, setToggle] = useState(false)
+    const state = useSelector((state: RootState) => state)
+
 
     const remember = () => { 
-        const idValue = (document.getElementById(`${C.TEXTID.ID}`) as HTMLInputElement ).value
-        console.log(idValue)
-        if (!localStorage.getItem('chk')) { 
-            localStorage.setItem('chk', idValue)
+        if (!localStorage.getItem(C.LOCAL.KEY)) { 
+            const id = document.getElementById(`${C.TEXTID.ID}`)
+            let idValue = (id as HTMLInputElement).value
+            localStorage.setItem(C.LOCAL.KEY, idValue)
         }
-        setToggle(!toggle)
-        console.log(toggle)
     }
-
+  
     return (
         <S.Layout>
             <S.Box className={`${C.CN.BC}`}>
@@ -34,11 +38,10 @@ const Login = () => {
                             return <Inputs id={el.id} label={el.label} key={i}/>
                         })
                     }
-                    {
-                        toggle ?
-                        <FormControlLabel control={<Checkbox defaultChecked onClick={remember}/>} label={`${C.LABELS.RM}`} />
-                        :     
-                        <FormControlLabel control={<Checkbox  onClick={remember}/>} label={`${C.LABELS.RM}`} />
+                    {   
+                        toggle ? 
+                        <FormControlLabel control={<Checkbox  onClick={remember}/>} defaultChecked label={`${C.LABELS.RM}`} />
+                        :<FormControlLabel control={<Checkbox  onClick={remember}/>} label={`${C.LABELS.RM}`} />
                     }
                     <Btn page={`${C.PAGES.HOME}`}></Btn>
                 </S.Box_child_2>

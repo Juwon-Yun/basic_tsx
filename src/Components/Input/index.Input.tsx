@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {TextField} from '@material-ui/core'
+import * as C from '../../Constants/index'
 
 interface Input {
     id: string,
@@ -11,7 +12,8 @@ interface InputProps {
     InputList : Input
 }
 
-const Inputs = ({ id, label } : Input):JSX.Element => {
+const Inputs = ({ id, label }: Input): JSX.Element => {
+    if (id === 'text_id') return <TextField id={`${id}`} label={`${label}`} defaultValue={ localStorage.getItem(C.LOCAL.KEY)} />
     return <TextField id={`${id}`} label={`${label}`} />
     
 }
