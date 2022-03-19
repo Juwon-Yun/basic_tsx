@@ -13,7 +13,7 @@ function App() {
 
   const state = useSelector((state: RootState) => state)
 
-  const [toggle, setToggle] = useState(true)
+  // const [toggle, setToggle] = useState(false)
 
   const dispatch : Dispatch = useDispatch()
 
@@ -21,7 +21,8 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path={"/"}>
-          <Login toggle={ toggle }></Login>
+          {/* <Login toggle={ toggle }></Login> */}
+          <Login></Login>
         </Route>
 
         <Route path={"/si"}>
