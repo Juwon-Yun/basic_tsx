@@ -13,7 +13,9 @@ interface InputProps {
 }
 
 const Inputs = ({ id, label }: Input): JSX.Element => {
-    if (id === 'text_id') return <TextField id={`${id}`} label={`${label}`} defaultValue={ localStorage.getItem(C.LOCAL.KEY) && JSON.parse(localStorage.getItem(C.LOCAL.KEY) as string).id} />
+    if (id === 'text_id') return <TextField id={`${id}`} label={`${label}`} defaultValue={
+        localStorage.getItem(C.LOCAL.KEY) && JSON.parse(localStorage.getItem(C.LOCAL.KEY) as string).id }
+    />
     return <TextField id={`${id}`} label={`${label}`} />
     
 }

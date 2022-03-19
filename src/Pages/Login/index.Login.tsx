@@ -9,6 +9,7 @@ import * as C from '../../Constants/index'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Modules";
 import { stringify } from "querystring";
+import * as A from '../../Modules/Actions/Local'
 
 interface LoginProps { 
     toggle :boolean
@@ -29,12 +30,26 @@ const Login = ():JSX.Element => {
 
     const [checkBox, toggleCheckBox] = useState(false)
 
+    const [idText, setIdValue] = useState('')
     useEffect(() => {
         if (localStorage.getItem(C.LOCAL.KEY)) { 
             let tmp = ( JSON.parse(localStorage.getItem(C.LOCAL.KEY) as string)).check
             tmp && toggleCheckBox(true)
         }
+        return () => {
+            localStorage.removeItem(C.LOCAL.KEY)
+            
+            // const id = document.getElementById(`${C.TEXTID.ID}`)
+            // let idValue = (id as HTMLInputElement).value
+            console.log(idText)
+            localStorage.setItem(C.LOCAL.KEY, JSON.stringify({ id: checkBox ? idText : '', check: !checkBox }))
+        }
      },[])
+
+    const handleChecked = () => { 
+        // dispatch( Action함수( payload ) )
+        dispatch(A.setRemeberID(checkBox))
+    }
 
     // const remember = (e : ChangeEvent<HTMLElement>) => { 
     const remember = () => { 
@@ -49,9 +64,10 @@ const Login = ():JSX.Element => {
         if (!localStorage.getItem(C.LOCAL.KEY)) { 
             const id = document.getElementById(`${C.TEXTID.ID}`)
             let idValue = (id as HTMLInputElement).value
-            
-            localStorage.setItem(C.LOCAL.KEY, JSON.stringify({ id: checkBox ? idValue : '', check : !checkBox }))
+            setIdValue(idValue)
+            // localStorage.setItem(C.LOCAL.KEY, JSON.stringify({ id: checkBox ? idValue : '', check : !checkBox }))
             toggleCheckBox(!checkBox)
+            handleChecked()
         }
     }
   
