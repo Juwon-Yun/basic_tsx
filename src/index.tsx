@@ -11,13 +11,13 @@ import { BrowserRouter } from 'react-router-dom';
 const store = createStore(rootReducer)
 
 ReactDOM.render(
-   <BrowserRouter>
+  <React.StrictMode> 
+    <BrowserRouter>
       <Provider store={store}>
         <GlobalStyle/>
         <App />
       </Provider>
     </BrowserRouter>,
+  </React.StrictMode>,
   document.getElementById('root')
 );
-  // {/* <React.StrictMode> */ }
-  // {/* </React.StrictMode> */}

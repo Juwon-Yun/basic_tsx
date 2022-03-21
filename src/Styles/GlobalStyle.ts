@@ -74,6 +74,7 @@ code {
 .App {
   height: 100vh;
   background-color: #f6f6f6;
+  overflow : hidden;
 }
 
 `

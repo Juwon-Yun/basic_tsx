@@ -7,12 +7,12 @@ interface Input {
     label : string,
 }
 const Inputs = ({ id, label }: Input): JSX.Element => {
-    if (id === 'text_id') return <TextField id={`${id}`} autoComplete={"off"} label={`${label}`} defaultValue={
-        localStorage.getItem(C.LOCAL.KEY) &&
-            JSON.parse(localStorage.getItem(C.LOCAL.KEY) as string).id}
-    />
-    return <TextField id={`${id}`} autoComplete={"off"} label={`${label}`} />
-    
+    if (id === 'text_id') { 
+        return <TextField id={`${id}`} autoComplete={"off"} label={`${label}`} />
+    } else if (id === 'text_pw') { 
+        return <TextField id={`${id}`} label={`${label}`} type="password" />
+    }
+    return <TextField id={`${id}`} label={`${label}`} />
 }
 
 export default Inputs

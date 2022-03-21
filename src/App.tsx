@@ -5,23 +5,13 @@ import Login from './Pages/Login/index.Login'
 import SignIn from './Pages/LoginTheme/SignIn';
 import Home from './Pages/Home/index.Home';
 import NotFound from './Pages/NotFound/index.NotFound'
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './Modules';
-import { Dispatch } from 'redux';
 
 function App() {
-
-  const state = useSelector((state: RootState) => state)
-
-  // const [toggle, setToggle] = useState(false)
-
-  const dispatch : Dispatch = useDispatch()
 
   return (
     <div className="App">
       <Switch>
         <Route exact path={"/"}>
-          {/* <Login toggle={ toggle }></Login> */}
           <Login></Login>
         </Route>
 

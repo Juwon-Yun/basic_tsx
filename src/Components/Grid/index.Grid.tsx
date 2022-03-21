@@ -1,26 +1,37 @@
-import * as React from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import React from 'react';
+import { DataGrid, GridColDef, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
+import { useDispatch } from 'react-redux';
+
+import * as A from '../../Modules/Actions/Grid'
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'id',
+    headerName: 'ID',
+    width: 90,
+    sortable: false,
+  },
   {
     field: 'firstName',
     headerName: 'First name',
     width: 150,
-    editable: true,
+    editable: false,
+    sortable: false,
   },
   {
     field: 'lastName',
     headerName: 'Last name',
     width: 150,
-    editable: true,
+    editable: false,
+    sortable: false,
   },
   {
     field: 'age',
     headerName: 'Age',
     type: 'number',
     width: 110,
-    editable: true,
+    editable: false,
+    sortable: false,
   },
   {
     field: 'fullName',
@@ -45,17 +56,28 @@ const rows = [
   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
-export default function DataGridDemo() {
+const Grid = () => {
+  
+  const dispatch = useDispatch()
+
+  // click row and set Reducer
+  const consoleView = (data: GridRowParams) => { 
+    dispatch(A.setDetail(data.row))
+  }
+
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: '40vh', width: '100%' }}>
       <DataGrid
+        onRowClick={consoleView}
         rows={rows}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection
+        // checkboxSelection
         disableSelectionOnClick
       />
     </div>
   );
 }
+
+export default Grid

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,21 +11,21 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useHistory } from 'react-router-dom';
 
-export default function MenuAppBar() {
+function MenuBar() {
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const history = useHistory()
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked);
+      setAuth(event.target.checked);
     };
 
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+      setAnchorEl(event.currentTarget);
     };
 
     const handleClose = () => {
-    setAnchorEl(null);
+      setAnchorEl(null);
     };
 
     const logout = () => { 
@@ -34,7 +34,7 @@ export default function MenuAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
+      {/* <FormGroup> */}
         {/* <FormControlLabel
           control={
             <Switch
@@ -45,10 +45,10 @@ export default function MenuAppBar() {
           }
           label={auth ? 'Logout' : 'Login'}
         /> */}
-      </FormGroup>
+      {/* </FormGroup> */}
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -56,7 +56,7 @@ export default function MenuAppBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Datas
           </Typography>
@@ -88,7 +88,6 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>프로필</MenuItem>
-                <MenuItem onClick={handleClose}>회원 정보</MenuItem>
                 <MenuItem onClick={logout}>로그아웃</MenuItem>
               </Menu>
             </div>
@@ -98,3 +97,5 @@ export default function MenuAppBar() {
     </Box>
   );
 }
+
+export default MenuBar

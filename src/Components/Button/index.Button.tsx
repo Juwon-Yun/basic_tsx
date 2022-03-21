@@ -11,7 +11,6 @@ interface ButtonProps {
     page: string
 }
 
-
 const IndexButton = ({ page }: ButtonProps) :JSX.Element  => { 
 
     const dispatch = useDispatch()
@@ -28,20 +27,28 @@ const IndexButton = ({ page }: ButtonProps) :JSX.Element  => {
         localStorage.setItem('test_chk', JSON.stringify( {key : idVal, ischeck : state.isChecked } ) as string )
     }
     
-
+    // if (page === '/back') {
+    //     return (<Button onClick={() => { history.goBack() }} variant="contained">뒤로가기</Button>)
+    // }
+    // return (<Button onClick={() => { clickBtn(); history.push(page)} } variant="contained">Sign In</Button>)
     
-    if (page === 'back') {
-        return (<Button onClick={() => { history.goBack() }} variant="contained">뒤로가기</Button>)
+    // 삼항연산자 , switch 
+    switch (page) {
+        case '/back':
+            return (<Button onClick={() => { history.goBack() }} variant="contained">뒤로가기</Button>)
+        case '/home':
+            return (<Button onClick={() => { clickBtn(); history.push(page)} } variant="contained">Sign In</Button>)
+        default:
+            return (<Button onClick={() => { history.push(page)} } variant="contained">Default Button</Button>)
     }
-    return (<Button onClick={() => { clickBtn(); history.push(page)} } variant="contained">Sign In</Button>)
- 
     // return (
     //     <div>
     //         {
     //             {
-    //                 '/home' : <Button onClick={() => { history.push(page) }} variant="contained">Sign In</Button>,
-    //                 '/back' : <Button onClick={() => { history.goBack() }} variant="contained">뒤로가기</Button>
-    //             }[crrent]
+    //                 '/home' : <Button onClick={() => { clickBtn(); history.push(page) }} variant="contained">Sign In</Button>,
+    //                 '/back' : <Button onClick={() => { history.goBack() }} variant="contained">뒤로가기</Button>,
+    //                 '/detail' : <Button onClick={() => { history.goBack() }} variant="contained">뒤로가기</Button>
+    //             }[current]
     //         }
     //     </div>
     // )
