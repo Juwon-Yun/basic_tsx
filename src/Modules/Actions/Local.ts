@@ -1,15 +1,12 @@
-export const LOCAL = "local/chk"
+export const SETVALUE = "local/setValue" as const
+export const SETCHK = "local/setChk" as const
 
-export const setRemember = (diff: string) => ({
-    type: LOCAL,
+export const setValue = (diff: string) => ({
+    type: SETVALUE,
     payload : diff
-})
+}) 
 
-// action type을 정의 
-export const REMBMERID = "local/REMEMBERID" 
-
-// action 함수 정의
-export const setRemeberID = (diff : boolean) =>( { 
-    type : REMBMERID,
+export const setChk = (diff : boolean) => ({
+    type: SETCHK,
     payload : diff
 })

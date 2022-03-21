@@ -1,6 +1,7 @@
 export const PAGES = {
     MAIN: "/",
     HOME: "/home",
+    BACK : "/back"
 }
 
 export const TEXTID = {
@@ -19,8 +20,7 @@ export const CN = {
 }
 
 export const LOCAL = {
-    KEY: "chk",
-    VALUE : localStorage.getItem('chk')
+    KEY: "test_chk",
 }
 
 export const TEXTOBJ = [
