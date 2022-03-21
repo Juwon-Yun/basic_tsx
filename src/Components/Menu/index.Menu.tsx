@@ -33,7 +33,7 @@ function MenuBar() {
     }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box style={{height : '64px'}}>
       {/* <FormGroup> */}
         {/* <FormControlLabel
           control={

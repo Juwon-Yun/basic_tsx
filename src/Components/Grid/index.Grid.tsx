@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataGrid, GridColDef, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Detail from '../../Pages/Detail/index.Detail'
 
 import * as A from '../../Modules/Actions/Grid'
+import { useHistory } from 'react-router-dom';
+import { RootState } from '../../Modules';
 
 const columns: GridColDef[] = [
   {
@@ -53,28 +56,49 @@ const rows = [
   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 9, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 10, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 11, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 12, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 13, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 14, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 15, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 16, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
 const Grid = () => {
   
   const dispatch = useDispatch()
+  const history = useHistory()
+  const state = useSelector( (state:RootState) => state.grid)
 
   // click row and set Reducer
-  const consoleView = (data: GridRowParams) => { 
+  const consoleView = (data: GridRowParams)  => { 
+    dispatch(A.setDetailId(data.row.id))
+
     dispatch(A.setDetail(data.row))
+
+    console.log(state.id)
+    
+    // useEffect(() => {
+      
+    // }, [state.id])
+    
+
+    // history.push(`/detail/:${state.id}`)
+    history.push("/detail")
   }
 
   return (
-    <div style={{ height: '40vh', width: '100%' }}>
+    <div style={{ height: '100%', width: '100%' }}>
       <DataGrid
         onRowClick={consoleView}
         rows={rows}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
         // checkboxSelection
-        disableSelectionOnClick
+        // disableSelectionOnClick  
       />
     </div>
   );

@@ -64,6 +64,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow:hidden;
 }
 
 code {
@@ -74,7 +75,6 @@ code {
 .App {
   height: 100vh;
   background-color: #f6f6f6;
-  overflow : hidden;
 }
 
 `
